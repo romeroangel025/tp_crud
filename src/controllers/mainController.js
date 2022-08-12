@@ -19,11 +19,10 @@ const controller = {
 	search: (req, res) => {
 		// Do the magic
 		const products=loadProducts();
-const productsSearch=products.filter( product =>product.includes(req.query.keywords));
-		return res.render('result',{
-			productsSearch
-		})
-	},
-};
-
+const productsSearch=products.filter( product => product.name.toLowerCase().includes(req.query.keywords.toLowerCase()));
+		return res.render('results',{
+			productsSearch,toThousand
+	})
+},
+}
 module.exports = controller;
