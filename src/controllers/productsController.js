@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { loadProducts,storeProducts } = require('../data/productModule');
 
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
@@ -15,8 +16,9 @@ const controller = {
 	// Detail - Detail from one product
 	detail: (req, res) => {
 		// Do the magic
+		const products=loadProducts();
 		const product = products.find(product => product.id===+req.params.id)
-
+		
 		return res.render('detail',{
 			product,toThousand
 		})
@@ -45,17 +47,14 @@ const controller = {
 	
 		let productsNew = [...products, newProduct];
 	
-		fs.writeFileSync(
-		  path.join(__dirname, "..", "data", "productsDataBase.json"),
-		  JSON.stringify(productsNew, null, 3),
-		  "utf-8"
-		);
+		storeProducts(productsNew);
 		return res.redirect("/");
 	},
 
 	// Update - Form to edit
 	edit: (req, res) => {
 		// Do the magic
+		
 		const product = products.find(product => product.id===+req.params.id);
 
 		return res.render('product-edit-form',{
@@ -65,6 +64,7 @@ const controller = {
 	// Update - Method to update
 	update: (req, res) => {
 		//do the magic
+
 		const { id } = req.params;
 		let { name, price, discount, description, category } = req.body;
 	
@@ -83,10 +83,7 @@ const controller = {
 		  }
 		});
 	
-		fs.writeFileSync(
-		  path.join(__dirname, "..", "data", "productsDataBase.json"),
-		  JSON.stringify(productModify, null, 3),
-		  "utf-8");
+		storeProducts(productModify);
 		return res.redirect("/products/detail/" + id);
 	  },
 
@@ -97,7 +94,7 @@ const controller = {
 
         const productFilter = products.filter(product => product.id !== +id);
 
-        fs.writeFileSync(path.join(__dirname, '..', 'data', 'productsDataBase.json'),JSON.stringify(productFilter,null,3),'utf-8');    
+        storeProducts(productFilter);
         return res.redirect('/');
   }
 };
