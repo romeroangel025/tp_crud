@@ -33,8 +33,8 @@ const controller = {
 	store: (req, res) => {
 		// Do the magic
 		const { id } = req.params;
-		let { name, price, discount, description, category } = req.body;
-	
+		let { name, price, discount, description, category} = req.body;
+		//const imagen = req.files["image"] ;
 		let newProduct = {
 		  id: products[products.length - 1].id + 1,
 		  name: name.trim(),
