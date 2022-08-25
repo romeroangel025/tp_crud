@@ -151,5 +151,45 @@
       "discount": 15,
       "category": "in-sale",
       "image": "default-image.png"
+   },
+   {
+      "id": 18,
+      "name": "reloz",
+      "description": "detector",
+      "price": 12000,
+      "discount": 20,
+      "category": "in-sale"
+   },
+   {
+      "id": 19,
+      "name": "",
+      "description": "",
+      "price": 0,
+      "discount": 0,
+      "category": ""
+   },
+   {
+      "id": 20,
+      "name": "aventura",
+      "description": "lknlkhlkhñohgon",
+      "price": 1000000,
+      "discount": 20,
+      "category": "visited"
+   },
+   {
+      "id": 21,
+      "name": "dsagfaesf",
+      "description": "awdawdwad",
+      "price": 120,
+      "discount": 54,
+      "category": "visited"
+   },
+   {
+      "id": 22,
+      "name": "dsagfaesf",
+      "description": "awdawdwad",
+      "price": 120,
+      "discount": 54,
+      "category": "visited"
    }
 ]
