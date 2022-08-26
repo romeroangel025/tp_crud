@@ -34,7 +34,7 @@ const controller = {
 		// Do the magic
 		const { id } = req.params;
 		let { name, price, discount, description, category} = req.body;
-		let imagen = req.file["image"];
+		
 		
 		let newProduct = {
 		  id: products[products.length - 1].id + 1,
@@ -42,8 +42,8 @@ const controller = {
 		  description: description.trim(),
 		  price: +price,
 		  discount: +discount,
-		  category:category,
-		  image:imagen,
+		  category,
+		  image:req.file["image"],
 		};
 	
 		let productsNew = [...products, newProduct];
@@ -77,7 +77,7 @@ const controller = {
 			  description: description.trim(),
 			  price: +price,
 			  discount: +discount,
-			  category:category,
+			  category,
 			};
 		  } else {
 			return product;
