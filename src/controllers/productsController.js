@@ -43,7 +43,7 @@ const controller = {
 		  price: +price,
 		  discount: +discount,
 		  category,
-		  image:req.file["image"],
+		  image:req.file.filename,
 		};
 	
 		let productsNew = [...products, newProduct];
